@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clavis Password Manager — ローカル完結型パスワード管理</title>
+  <meta name="description" content="Clavis Password Manager — ID/パスワード/URL/メモを AES-256-GCM でローカルに暗号化保存する、Electron 製のパスワードマネージャ。">
+  <link rel="icon" href="./assets/img/icon.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="./assets/css/custom.css" rel="stylesheet">
+</head>
+
+<body>
+<header>
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <a href="./" class="navbar-brand d-flex align-items-center">
+        <img src="./assets/img/icon.png" alt="" width="22" height="22" class="me-2">
+        <strong>clavis-password-manager</strong>
+      </a>
+      <div>
+        <a href="./manual.html" class="text-light text-decoration-none small me-3">
+          <i class="bi bi-book me-1"></i>マニュアル
+        </a>
+        <a href="https://github.com/informanellica/clavis-password-manager/releases" class="text-light text-decoration-none small me-3">
+          <i class="bi bi-clock-history me-1"></i>更新履歴
+        </a>
+        <a href="https://github.com/informanellica/clavis-password-manager" class="text-light text-decoration-none small">
+          <i class="bi bi-github me-1"></i>GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="py-5 bg-body-tertiary border-bottom">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <div class="d-flex align-items-center mb-3">
+          <img src="./assets/img/icon.png" alt="" width="56" height="56" class="me-3">
+          <div>
+            <h1 class="mb-0">Clavis Password Manager</h1>
+            <p class="text-body-secondary mb-0">
+              ローカル完結型パスワード管理
+              <span class="badge text-bg-secondary ms-1">v0.0.3</span>
+            </p>
+          </div>
+        </div>
+        <p class="lead">
+          ID・パスワード・URL・メモを AES-256-GCM でローカルに暗号化保存する、Electron 製のパスワードマネージャ。
+          ID Manager 風のグループ階層 UI、CSV / XML / JSON のインポート・エクスポート、強力なパスワード生成器を備え、
+          クラウドにも外部にもデータを送りません。
+        </p>
+        <div class="d-flex flex-wrap gap-2">
+          <a href="https://github.com/informanellica/clavis-password-manager/releases/latest"
+             class="btn btn-primary btn-lg">
+            <i class="bi bi-download me-1"></i>最新版ダウンロード
+          </a>
+          <a href="./manual.html" class="btn btn-outline-secondary btn-lg">
+            <i class="bi bi-book me-1"></i>マニュアル
+          </a>
+        </div>
+        <p class="text-body-secondary small mt-2 mb-0">
+          <i class="bi bi-windows me-1"></i>Windows 11 (64-bit)
+          ・無料・フリーソフト
+        </p>
+      </div>
+      <div class="col-lg-6 mt-4 mt-lg-0">
+        <img src="./assets/img/screenshot-main.png" class="img-fluid rounded shadow" alt="メイン画面"
+             onerror="this.style.display='none'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="container py-5 doc-body">
+
+  <h2>主な機能</h2>
+  <div class="row g-3 mt-3">
+    <div class="col-md-6">
+      <div class="d-flex">
+        <i class="bi bi-shield-lock fs-3 text-warning me-3"></i>
+        <div>
+          <h5 class="mb-1">AES-256-GCM 暗号化</h5>
+          <p class="text-body-secondary mb-0 small">
+            金庫ファイルはマスターパスワードから PBKDF2-310000 で導出された鍵で AES-256-GCM 暗号化。
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="d-flex">
+        <i class="bi bi-folder-symlink fs-3 text-primary me-3"></i>
+        <div>
+          <h5 class="mb-1">グループ階層管理</h5>
+          <p class="text-body-secondary mb-0 small">
+            ID Manager 風のツリービュー。ドラッグ&ドロップで並べ替え・移動、グループのマージにも対応。
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="d-flex">
+        <i class="bi bi-arrow-left-right fs-3 text-success me-3"></i>
+        <div>
+          <h5 class="mb-1">CSV / XML / JSON インポート</h5>
+          <p class="text-body-secondary mb-0 small">
+            Shift-JIS / UTF-8 双方の自動判定で、ID Manager や他社マネージャからの移行も可能。
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="d-flex">
+        <i class="bi bi-key fs-3 text-info me-3"></i>
+        <div>
+          <h5 class="mb-1">パスワード生成器</h5>
+          <p class="text-body-secondary mb-0 small">
+            英大小・数字・記号と長さを指定可、暗号論的乱数 (crypto.randomBytes) で生成。
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="d-flex">
+        <i class="bi bi-clipboard-check fs-3 text-danger me-3"></i>
+        <div>
+          <h5 class="mb-1">30 秒で消えるクリップボード</h5>
+          <p class="text-body-secondary mb-0 small">
+            コピーしたパスワードは 30 秒後に自動でクリップボードから削除。
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="d-flex">
+        <i class="bi bi-search fs-3 text-secondary me-3"></i>
+        <div>
+          <h5 class="mb-1">即時検索</h5>
+          <p class="text-body-secondary mb-0 small">
+            名前・ID・URL・メモの横断検索。文字を打つたびにリストを絞り込み。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2>動作環境</h2>
+  <ul>
+    <li><strong>Windows 11</strong> (64-bit)</li>
+    <li>必要 RAM 約 2GB 以上を推奨</li>
+    <li>金庫ファイルは OS の userData フォルダ配下 (<code>%APPDATA%\Clavis Password Manager\vault.enc</code>) に保存</li>
+    <li>インターネット接続は不要 (完全オフラインで動作)</li>
+  </ul>
+
+  <h2>インストール</h2>
+  <ol>
+    <li><a href="https://github.com/informanellica/clavis-password-manager/releases/latest">最新版リリースページ</a>から
+        <code>Clavis Password Manager Setup x.y.z.exe</code> をダウンロード</li>
+    <li>ダウンロードしたインストーラを実行</li>
+    <li>スタートメニューから「Clavis Password Manager」を起動</li>
+    <li>初回起動時にマスターパスワードを設定 (忘れると復号不能のため厳重に管理)</li>
+  </ol>
+
+  <h2 id="フリーソフト利用規約">フリーソフト利用規約</h2>
+  <p>Informanellica（以下「甲」といいます）が公開しているプログラムを利用する方（以下「乙」といいます）に、本利用規約が適用されます。</p>
+  <h5>（フリーソフト）</h5>
+  <p>1 甲が公開しているプログラム（以下「本件ソフトウェア」といいます）はフリーソフトとし、個人利用、商用利用を問わず、無料で使用できます。</p>
+  <h5>（著作権）</h5>
+  <p>2 本件ソフトウェアの著作権は、甲に帰属します。</p>
+  <h5>（プログラムの改変・改良）</h5>
+  <p>3 乙が本件ソフトウェアを改変・改良した場合、それにより発生する不具合は乙が責任を負います。</p>
+  <h5>（禁止行為）</h5>
+  <p>4 以下の行為を禁止します。</p>
+  <ul>
+    <li>(1) 本件ソフトウェアおよびその改変物の再配布</li>
+    <li>(2) 本件ソフトウェアそのものを第三者に有償で提供する行為、または本件ソフトウェアの実行を内容とするサービスを第三者に有償で提供する行為</li>
+    <li>(3) その他、甲に損害をもたらす行為</li>
+  </ul>
+  <h5>（利用停止）</h5>
+  <p>5 本規約に反する行為がある場合には、本件ソフトウェアの利用を停止していただく場合があります。</p>
+  <h5>（プログラムの提供停止）</h5>
+  <p>6 甲は、本件ソフトウェアの全部または一部の提供を廃止することがあります。提供の廃止によって乙に発生した損害について、甲は一切責任を負いません。</p>
+  <h5>（免責）</h5>
+  <p>7 本件ソフトウェアに不具合があった場合であっても、甲は修復の義務を負いません。本件ソフトウェアを使用すること、または、本件ソフトウェアを使用できなかったことに関して発生した損害について、甲は一切責任を負いません。</p>
+  <h5>（利用規約の変更）</h5>
+  <p>8 本規約は、甲が乙に事前告知なく変更いたします。変更後の規約は、甲のウェブサイトに掲載されたときに効力を発生します。</p>
+
+</main>
+
+<footer class="text-body-secondary py-4 border-top mt-5">
+  <div class="container small">
+    <p class="mb-1">© Informanellica</p>
+    <p class="mb-0">
+      <a href="https://informanellica.github.io/" class="text-body-secondary">← Software Album</a>
+    </p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
