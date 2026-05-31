@@ -1,6 +1,6 @@
 # clavis-password-manager
 
-ID・パスワード・URL・メモを AES-256-GCM でローカルに暗号化保存する、Electron 製のパスワードマネージャ。
+ID・パスワード・URL・メモを AES-256-GCM でローカルに暗号化保存するパスワードマネージャ。
 
 - 公式サイト: <https://informanellica.github.io/clavis-password-manager/>
 - マニュアル: <https://informanellica.github.io/clavis-password-manager/manual.html>
